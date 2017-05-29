@@ -1,5 +1,20 @@
-WMS/**/idea/
+*.pyc
+*.pyo
+*.mo
+*~
+.coverage
+db.sqlite3
+uwsgi.ini
+log/**
+!log/placeholder
+media/**
+!media/**/init.txt
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
 
+WMS/**/idea/
+__pycache__/
 # Byte-compiled / optimized / DLL files
 WMS/**/__pycache__/
 *.py[cod]
