@@ -127,9 +127,9 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        #'rest_framework.authentication.BasicAuthentication', -> removing this because it prevents you from logging out from django rest_framework page
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication', #used for authenticating sessions
+        'rest_framework.authentication.TokenAuthentication', #enables to use tokens
+        'rest_framework.authentication.BasicAuthentication', # enables to use use requests library for sending in requests
 
     )
 }
