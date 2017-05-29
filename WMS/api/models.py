@@ -10,13 +10,14 @@ from django.dispatch import receiver
 
 class Reading(models.Model):
     id = models.IntegerField(unique=True, primary_key=True)
-    owner = models.ForeignKey('auth.User', related_name='wms', on_delete=models.CASCADE, null=False)
-    temperature = models.IntegerField(default=0, null= False)
-    pressure = models.IntegerField(default=0, null=False)
+    owner = models.ForeignKey('auth.User', related_name='api', on_delete=models.CASCADE, null=False)
+    temperature = models.FloatField(default=0, null= False)
+    pressure = models.FloatField(default=0, null=False)
+    humidity = models.FloatField(default=0, null=False)
     updated = models.DateTimeField(auto_now=True, null=False)
 
-    def __str__(self):
-        return 'Temperature = {}\nPressure = {}'.format(str(self.temperature), str(self.pressure))
+    # def __str__(self):
+    #     return 'Temperature = {}\nPressure = {}\nHumidity = {}'.format(str(self.temperature), str(self.pressure), str(self.humidity))
 
 
 

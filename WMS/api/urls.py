@@ -20,13 +20,13 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 
 urlpatterns = [
-    url(r'^wms/(?P<pk>[0-9]+)$', DetailsView.as_view(), name='details'),
-    url(r'^wms/$', CreateView.as_view(), name='create'),
+    url(r'^(?P<pk>[0-9]+)$', DetailsView.as_view(), name='details'),
+    url(r'^$', CreateView.as_view(), name='create'),
     # This new line includes the DRF routes that provides a default login template
     # to authenticate a user. You can call the route anything you want.
     # you will see a login button on the top right of the screen when you access any of the above urls
-    url(r'^wms/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^wms/get-token/', obtain_auth_token),
+    url(r'^', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^get-token/', obtain_auth_token),
 ]
 
 

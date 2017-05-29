@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from wms import urls as wmsurls
+from api import urls as wmsurls
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(wmsurls)),
+    url(r'^api/', include(wmsurls)),
 ]

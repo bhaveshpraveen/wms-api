@@ -8,5 +8,5 @@ class ReadingSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Reading
-        fields = ('temperature', 'pressure', 'updated', 'owner')
+        fields = ('temperature', 'pressure', 'humidity', 'updated', 'owner')
         read_only_fields = ('updated',)

@@ -13,7 +13,8 @@ class ModelTestCase(TestCase):
         self.user = User.objects.create(username="geek")
         self.sample_pressure = 24
         self.sample_temperature = 30
-        self.readings = Reading(temperature=self.sample_temperature, pressure=self.sample_pressure, owner=self.user)
+        self.sample_humidity = 90
+        self.readings = Reading(temperature=self.sample_temperature, pressure=self.sample_pressure, humidity=self.sample_humidity, owner=self.user)
 
 
     def test_model_can_create_a_reading(self):
@@ -29,7 +30,7 @@ class ViewTestCase(TestCase):
         self.user = User.objects.create(username="geek")
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
-        self.reading_data = {'temperature': 40, 'pressure': 32, 'owner': self.user.id}
+        self.reading_data = {'temperature': 40, 'pressure': 32, 'humidity': 77, 'owner': self.user.id}
         self.response = self.client.post(
             reverse('create'),
             self.reading_data,
@@ -65,7 +66,7 @@ class ViewTestCase(TestCase):
 
     def test_api_can_update_a_reading(self):
         reading = Reading.objects.get()
-        change_reading = {'temperature': 40, 'pressure': 160}
+        change_reading = {'temperature': 40, 'pressure': 160, 'humidity': 74}
         response = self.client.put(
             reverse('details', kwargs={'pk': reading.id}),
             change_reading,
